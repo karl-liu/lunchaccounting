@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LunchAccounting.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="LunchAccountingModelsStoreContainer">
+          <EntitySet Name="AppResource" EntityType="LunchAccounting.Models.Store.AppResource" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AppResourceAccess" EntityType="LunchAccounting.Models.Store.AppResourceAccess" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FoodCard" EntityType="LunchAccounting.Models.Store.FoodCard" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FoodCardRecharge" EntityType="LunchAccounting.Models.Store.FoodCardRecharge" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LunchRegister" EntityType="LunchAccounting.Models.Store.LunchRegister" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="LunchAccounting.Models.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserAccount" EntityType="LunchAccounting.Models.Store.UserAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserConsume" EntityType="LunchAccounting.Models.Store.UserConsume" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserGroup" EntityType="LunchAccounting.Models.Store.UserGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserGroupMember" EntityType="LunchAccounting.Models.Store.UserGroupMember" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AppResourceAccess_AppResource" Association="LunchAccounting.Models.Store.FK_AppResourceAccess_AppResource">
+            <End Role="AppResource" EntitySet="AppResource" />
+            <End Role="AppResourceAccess" EntitySet="AppResourceAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCard_User" Association="LunchAccounting.Models.Store.FK_FoodCard_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FoodCard" EntitySet="FoodCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCardRecharge_FoodCard" Association="LunchAccounting.Models.Store.FK_FoodCardRecharge_FoodCard">
+            <End Role="FoodCard" EntitySet="FoodCard" />
+            <End Role="FoodCardRecharge" EntitySet="FoodCardRecharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCardRecharge_User_OperateFor" Association="LunchAccounting.Models.Store.FK_FoodCardRecharge_User_OperateFor">
+            <End Role="User" EntitySet="User" />
+            <End Role="FoodCardRecharge" EntitySet="FoodCardRecharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCardRecharge_User_Operator" Association="LunchAccounting.Models.Store.FK_FoodCardRecharge_User_Operator">
+            <End Role="User" EntitySet="User" />
+            <End Role="FoodCardRecharge" EntitySet="FoodCardRecharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LunchRegister_User" Association="LunchAccounting.Models.Store.FK_LunchRegister_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LunchRegister" EntitySet="LunchRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_FoodCard" Association="LunchAccounting.Models.Store.FK_UserAccount_FoodCard">
+            <End Role="FoodCard" EntitySet="FoodCard" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_User" Association="LunchAccounting.Models.Store.FK_UserAccount_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserConsume_FoodCard" Association="LunchAccounting.Models.Store.FK_UserConsume_FoodCard">
+            <End Role="FoodCard" EntitySet="FoodCard" />
+            <End Role="UserConsume" EntitySet="UserConsume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserConsume_LunchRegister" Association="LunchAccounting.Models.Store.FK_UserConsume_LunchRegister">
+            <End Role="LunchRegister" EntitySet="LunchRegister" />
+            <End Role="UserConsume" EntitySet="UserConsume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserConsume_User" Association="LunchAccounting.Models.Store.FK_UserConsume_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserConsume" EntitySet="UserConsume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupMember_User" Association="LunchAccounting.Models.Store.FK_UserGroupMember_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserGroupMember" EntitySet="UserGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupMember_UserGroup" Association="LunchAccounting.Models.Store.FK_UserGroupMember_UserGroup">
+            <End Role="UserGroup" EntitySet="UserGroup" />
+            <End Role="UserGroupMember" EntitySet="UserGroupMember" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppResource">
+          <Key>
+            <PropertyRef Name="AppResource_id" />
+          </Key>
+          <Property Name="AppResource_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Resource" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="DefaultAccess" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AppResourceAccess">
+          <Key>
+            <PropertyRef Name="AppResourceAccess_id" />
+          </Key>
+          <Property Name="AppResourceAccess_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AppResource_id" Type="int" Nullable="false" />
+          <Property Name="Identity_id" Type="int" Nullable="false" />
+          <Property Name="IdentityType" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="OperationType" Type="varchar" MaxLength="10" />
+          <Property Name="Access" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="FoodCard">
+          <Key>
+            <PropertyRef Name="FoodCard_id" />
+          </Key>
+          <Property Name="FoodCard_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCardName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Owner_id" Type="int" Nullable="false" />
+          <Property Name="CurrentBalance" Type="money" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodCardRecharge">
+          <Key>
+            <PropertyRef Name="FoodCardRecharge_id" />
+          </Key>
+          <Property Name="FoodCardRecharge_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCard_id" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Operator" Type="int" Nullable="false" />
+          <Property Name="OperateFor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LunchRegister">
+          <Key>
+            <PropertyRef Name="LunchRegister_id" />
+          </Key>
+          <Property Name="LunchRegister_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="LunchDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserAccount_id" />
+          </Key>
+          <Property Name="UserAccount_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCard_id" Type="int" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserConsume">
+          <Key>
+            <PropertyRef Name="UserConsume_id" />
+          </Key>
+          <Property Name="UserConsume_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCard_id" Type="int" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Register_id" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="ConsumeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="UserGroup_id" />
+          </Key>
+          <Property Name="UserGroup_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserGroupMember">
+          <Key>
+            <PropertyRef Name="UserGroupMember_id" />
+          </Key>
+          <Property Name="UserGroupMember_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="UserGroup_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AppResourceAccess_AppResource">
+          <End Role="AppResource" Type="LunchAccounting.Models.Store.AppResource" Multiplicity="1" />
+          <End Role="AppResourceAccess" Type="LunchAccounting.Models.Store.AppResourceAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppResource">
+              <PropertyRef Name="AppResource_id" />
+            </Principal>
+            <Dependent Role="AppResourceAccess">
+              <PropertyRef Name="AppResource_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCard_User">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="FoodCard" Type="LunchAccounting.Models.Store.FoodCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="FoodCard">
+              <PropertyRef Name="Owner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCardRecharge_FoodCard">
+          <End Role="FoodCard" Type="LunchAccounting.Models.Store.FoodCard" Multiplicity="1" />
+          <End Role="FoodCardRecharge" Type="LunchAccounting.Models.Store.FoodCardRecharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCard">
+              <PropertyRef Name="FoodCard_id" />
+            </Principal>
+            <Dependent Role="FoodCardRecharge">
+              <PropertyRef Name="FoodCard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCardRecharge_User_OperateFor">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="FoodCardRecharge" Type="LunchAccounting.Models.Store.FoodCardRecharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="FoodCardRecharge">
+              <PropertyRef Name="OperateFor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCardRecharge_User_Operator">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="FoodCardRecharge" Type="LunchAccounting.Models.Store.FoodCardRecharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="FoodCardRecharge">
+              <PropertyRef Name="Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LunchRegister_User">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="LunchRegister" Type="LunchAccounting.Models.Store.LunchRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="LunchRegister">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_FoodCard">
+          <End Role="FoodCard" Type="LunchAccounting.Models.Store.FoodCard" Multiplicity="1" />
+          <End Role="UserAccount" Type="LunchAccounting.Models.Store.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCard">
+              <PropertyRef Name="FoodCard_id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="FoodCard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_User">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="UserAccount" Type="LunchAccounting.Models.Store.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserConsume_FoodCard">
+          <End Role="FoodCard" Type="LunchAccounting.Models.Store.FoodCard" Multiplicity="1" />
+          <End Role="UserConsume" Type="LunchAccounting.Models.Store.UserConsume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCard">
+              <PropertyRef Name="FoodCard_id" />
+            </Principal>
+            <Dependent Role="UserConsume">
+              <PropertyRef Name="FoodCard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserConsume_LunchRegister">
+          <End Role="LunchRegister" Type="LunchAccounting.Models.Store.LunchRegister" Multiplicity="1" />
+          <End Role="UserConsume" Type="LunchAccounting.Models.Store.UserConsume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LunchRegister">
+              <PropertyRef Name="LunchRegister_id" />
+            </Principal>
+            <Dependent Role="UserConsume">
+              <PropertyRef Name="Register_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserConsume_User">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="UserConsume" Type="LunchAccounting.Models.Store.UserConsume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserConsume">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupMember_User">
+          <End Role="User" Type="LunchAccounting.Models.Store.User" Multiplicity="1" />
+          <End Role="UserGroupMember" Type="LunchAccounting.Models.Store.UserGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserGroupMember">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupMember_UserGroup">
+          <End Role="UserGroup" Type="LunchAccounting.Models.Store.UserGroup" Multiplicity="1" />
+          <End Role="UserGroupMember" Type="LunchAccounting.Models.Store.UserGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="UserGroup_id" />
+            </Principal>
+            <Dependent Role="UserGroupMember">
+              <PropertyRef Name="UserGroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LunchAccounting.Models" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LunchAccountingEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="AppResources" EntityType="LunchAccounting.Models.AppResource" />
+          <EntitySet Name="AppResourceAccesses" EntityType="LunchAccounting.Models.AppResourceAccess" />
+          <EntitySet Name="FoodCards" EntityType="LunchAccounting.Models.FoodCard" />
+          <EntitySet Name="FoodCardRecharges" EntityType="LunchAccounting.Models.FoodCardRecharge" />
+          <EntitySet Name="LunchRegisters" EntityType="LunchAccounting.Models.LunchRegister" />
+          <EntitySet Name="Users" EntityType="LunchAccounting.Models.User" />
+          <EntitySet Name="UserAccounts" EntityType="LunchAccounting.Models.UserAccount" />
+          <EntitySet Name="UserConsumes" EntityType="LunchAccounting.Models.UserConsume" />
+          <EntitySet Name="UserGroups" EntityType="LunchAccounting.Models.UserGroup" />
+          <EntitySet Name="UserGroupMembers" EntityType="LunchAccounting.Models.UserGroupMember" />
+          <AssociationSet Name="FK_AppResourceAccess_AppResource" Association="LunchAccounting.Models.FK_AppResourceAccess_AppResource">
+            <End Role="AppResource" EntitySet="AppResources" />
+            <End Role="AppResourceAccess" EntitySet="AppResourceAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCard_User" Association="LunchAccounting.Models.FK_FoodCard_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FoodCard" EntitySet="FoodCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCardRecharge_FoodCard" Association="LunchAccounting.Models.FK_FoodCardRecharge_FoodCard">
+            <End Role="FoodCard" EntitySet="FoodCards" />
+            <End Role="FoodCardRecharge" EntitySet="FoodCardRecharges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_FoodCard" Association="LunchAccounting.Models.FK_UserAccount_FoodCard">
+            <End Role="FoodCard" EntitySet="FoodCards" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserConsume_FoodCard" Association="LunchAccounting.Models.FK_UserConsume_FoodCard">
+            <End Role="FoodCard" EntitySet="FoodCards" />
+            <End Role="UserConsume" EntitySet="UserConsumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCardRecharge_User_OperateFor" Association="LunchAccounting.Models.FK_FoodCardRecharge_User_OperateFor">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FoodCardRecharge" EntitySet="FoodCardRecharges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodCardRecharge_User_Operator" Association="LunchAccounting.Models.FK_FoodCardRecharge_User_Operator">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FoodCardRecharge" EntitySet="FoodCardRecharges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LunchRegister_User" Association="LunchAccounting.Models.FK_LunchRegister_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="LunchRegister" EntitySet="LunchRegisters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserConsume_LunchRegister" Association="LunchAccounting.Models.FK_UserConsume_LunchRegister">
+            <End Role="LunchRegister" EntitySet="LunchRegisters" />
+            <End Role="UserConsume" EntitySet="UserConsumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_User" Association="LunchAccounting.Models.FK_UserAccount_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserConsume_User" Association="LunchAccounting.Models.FK_UserConsume_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserConsume" EntitySet="UserConsumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupMember_User" Association="LunchAccounting.Models.FK_UserGroupMember_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserGroupMember" EntitySet="UserGroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupMember_UserGroup" Association="LunchAccounting.Models.FK_UserGroupMember_UserGroup">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="UserGroupMember" EntitySet="UserGroupMembers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppResource">
+          <Key>
+            <PropertyRef Name="AppResource_id" />
+          </Key>
+          <Property Name="AppResource_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Resource" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DefaultAccess" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="AppResourceAccesses" Relationship="LunchAccounting.Models.FK_AppResourceAccess_AppResource" FromRole="AppResource" ToRole="AppResourceAccess" />
+        </EntityType>
+        <EntityType Name="AppResourceAccess">
+          <Key>
+            <PropertyRef Name="AppResourceAccess_id" />
+          </Key>
+          <Property Name="AppResourceAccess_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AppResource_id" Type="Int32" Nullable="false" />
+          <Property Name="Identity_id" Type="Int32" Nullable="false" />
+          <Property Name="IdentityType" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="OperationType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Access" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="AppResource" Relationship="LunchAccounting.Models.FK_AppResourceAccess_AppResource" FromRole="AppResourceAccess" ToRole="AppResource" />
+        </EntityType>
+        <EntityType Name="FoodCard">
+          <Key>
+            <PropertyRef Name="FoodCard_id" />
+          </Key>
+          <Property Name="FoodCard_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCardName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Owner_id" Type="Int32" Nullable="false" />
+          <Property Name="CurrentBalance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OwnerInfo" Relationship="LunchAccounting.Models.FK_FoodCard_User" FromRole="FoodCard" ToRole="User" />
+          <NavigationProperty Name="FoodCardRecharges" Relationship="LunchAccounting.Models.FK_FoodCardRecharge_FoodCard" FromRole="FoodCard" ToRole="FoodCardRecharge" />
+          <NavigationProperty Name="UserAccounts" Relationship="LunchAccounting.Models.FK_UserAccount_FoodCard" FromRole="FoodCard" ToRole="UserAccount" />
+          <NavigationProperty Name="UserConsumes" Relationship="LunchAccounting.Models.FK_UserConsume_FoodCard" FromRole="FoodCard" ToRole="UserConsume" />
+        </EntityType>
+        <EntityType Name="FoodCardRecharge">
+          <Key>
+            <PropertyRef Name="FoodCardRecharge_id" />
+          </Key>
+          <Property Name="FoodCardRecharge_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCard_id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Operator" Type="Int32" Nullable="false" />
+          <Property Name="OperateFor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FoodCardInfo" Relationship="LunchAccounting.Models.FK_FoodCardRecharge_FoodCard" FromRole="FoodCardRecharge" ToRole="FoodCard" />
+          <NavigationProperty Name="RechargeFor" Relationship="LunchAccounting.Models.FK_FoodCardRecharge_User_OperateFor" FromRole="FoodCardRecharge" ToRole="User" />
+          <NavigationProperty Name="OperatorInfo" Relationship="LunchAccounting.Models.FK_FoodCardRecharge_User_Operator" FromRole="FoodCardRecharge" ToRole="User" />
+        </EntityType>
+        <EntityType Name="LunchRegister">
+          <Key>
+            <PropertyRef Name="LunchRegister_id" />
+          </Key>
+          <Property Name="LunchRegister_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="LunchDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="LunchAccounting.Models.FK_LunchRegister_User" FromRole="LunchRegister" ToRole="User" />
+          <NavigationProperty Name="UserConsumes" Relationship="LunchAccounting.Models.FK_UserConsume_LunchRegister" FromRole="LunchRegister" ToRole="UserConsume" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FoodCards" Relationship="LunchAccounting.Models.FK_FoodCard_User" FromRole="User" ToRole="FoodCard" />
+          <NavigationProperty Name="FoodCardRecharges" Relationship="LunchAccounting.Models.FK_FoodCardRecharge_User_OperateFor" FromRole="User" ToRole="FoodCardRecharge" />
+          <NavigationProperty Name="FoodCardRecharges1" Relationship="LunchAccounting.Models.FK_FoodCardRecharge_User_Operator" FromRole="User" ToRole="FoodCardRecharge" />
+          <NavigationProperty Name="LunchRegisters" Relationship="LunchAccounting.Models.FK_LunchRegister_User" FromRole="User" ToRole="LunchRegister" />
+          <NavigationProperty Name="UserAccounts" Relationship="LunchAccounting.Models.FK_UserAccount_User" FromRole="User" ToRole="UserAccount" />
+          <NavigationProperty Name="UserConsumes" Relationship="LunchAccounting.Models.FK_UserConsume_User" FromRole="User" ToRole="UserConsume" />
+          <NavigationProperty Name="UserGroupMembers" Relationship="LunchAccounting.Models.FK_UserGroupMember_User" FromRole="User" ToRole="UserGroupMember" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserAccount_id" />
+          </Key>
+          <Property Name="UserAccount_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCard_id" Type="Int32" Nullable="false" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="FoodCard" Relationship="LunchAccounting.Models.FK_UserAccount_FoodCard" FromRole="UserAccount" ToRole="FoodCard" />
+          <NavigationProperty Name="User" Relationship="LunchAccounting.Models.FK_UserAccount_User" FromRole="UserAccount" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserConsume">
+          <Key>
+            <PropertyRef Name="UserConsume_id" />
+          </Key>
+          <Property Name="UserConsume_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCard_id" Type="Int32" Nullable="false" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Register_id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ConsumeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FoodCard" Relationship="LunchAccounting.Models.FK_UserConsume_FoodCard" FromRole="UserConsume" ToRole="FoodCard" />
+          <NavigationProperty Name="LunchRegister" Relationship="LunchAccounting.Models.FK_UserConsume_LunchRegister" FromRole="UserConsume" ToRole="LunchRegister" />
+          <NavigationProperty Name="ConsumerInfo" Relationship="LunchAccounting.Models.FK_UserConsume_User" FromRole="UserConsume" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="UserGroup_id" />
+          </Key>
+          <Property Name="UserGroup_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="UserGroupMembers" Relationship="LunchAccounting.Models.FK_UserGroupMember_UserGroup" FromRole="UserGroup" ToRole="UserGroupMember" />
+        </EntityType>
+        <EntityType Name="UserGroupMember">
+          <Key>
+            <PropertyRef Name="UserGroupMember_id" />
+          </Key>
+          <Property Name="UserGroupMember_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="UserGroup_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="LunchAccounting.Models.FK_UserGroupMember_User" FromRole="UserGroupMember" ToRole="User" />
+          <NavigationProperty Name="UserGroup" Relationship="LunchAccounting.Models.FK_UserGroupMember_UserGroup" FromRole="UserGroupMember" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="FK_AppResourceAccess_AppResource">
+          <End Role="AppResource" Type="LunchAccounting.Models.AppResource" Multiplicity="1" />
+          <End Role="AppResourceAccess" Type="LunchAccounting.Models.AppResourceAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppResource">
+              <PropertyRef Name="AppResource_id" />
+            </Principal>
+            <Dependent Role="AppResourceAccess">
+              <PropertyRef Name="AppResource_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCard_User">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="FoodCard" Type="LunchAccounting.Models.FoodCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="FoodCard">
+              <PropertyRef Name="Owner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCardRecharge_FoodCard">
+          <End Role="FoodCard" Type="LunchAccounting.Models.FoodCard" Multiplicity="1" />
+          <End Role="FoodCardRecharge" Type="LunchAccounting.Models.FoodCardRecharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCard">
+              <PropertyRef Name="FoodCard_id" />
+            </Principal>
+            <Dependent Role="FoodCardRecharge">
+              <PropertyRef Name="FoodCard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_FoodCard">
+          <End Role="FoodCard" Type="LunchAccounting.Models.FoodCard" Multiplicity="1" />
+          <End Role="UserAccount" Type="LunchAccounting.Models.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCard">
+              <PropertyRef Name="FoodCard_id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="FoodCard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserConsume_FoodCard">
+          <End Role="FoodCard" Type="LunchAccounting.Models.FoodCard" Multiplicity="1" />
+          <End Role="UserConsume" Type="LunchAccounting.Models.UserConsume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCard">
+              <PropertyRef Name="FoodCard_id" />
+            </Principal>
+            <Dependent Role="UserConsume">
+              <PropertyRef Name="FoodCard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCardRecharge_User_OperateFor">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="FoodCardRecharge" Type="LunchAccounting.Models.FoodCardRecharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="FoodCardRecharge">
+              <PropertyRef Name="OperateFor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodCardRecharge_User_Operator">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="FoodCardRecharge" Type="LunchAccounting.Models.FoodCardRecharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="FoodCardRecharge">
+              <PropertyRef Name="Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LunchRegister_User">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="LunchRegister" Type="LunchAccounting.Models.LunchRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="LunchRegister">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserConsume_LunchRegister">
+          <End Role="LunchRegister" Type="LunchAccounting.Models.LunchRegister" Multiplicity="1" />
+          <End Role="UserConsume" Type="LunchAccounting.Models.UserConsume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LunchRegister">
+              <PropertyRef Name="LunchRegister_id" />
+            </Principal>
+            <Dependent Role="UserConsume">
+              <PropertyRef Name="Register_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_User">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="UserAccount" Type="LunchAccounting.Models.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserConsume_User">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="UserConsume" Type="LunchAccounting.Models.UserConsume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserConsume">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupMember_User">
+          <End Role="User" Type="LunchAccounting.Models.User" Multiplicity="1" />
+          <End Role="UserGroupMember" Type="LunchAccounting.Models.UserGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="UserGroupMember">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupMember_UserGroup">
+          <End Role="UserGroup" Type="LunchAccounting.Models.UserGroup" Multiplicity="1" />
+          <End Role="UserGroupMember" Type="LunchAccounting.Models.UserGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="UserGroup_id" />
+            </Principal>
+            <Dependent Role="UserGroupMember">
+              <PropertyRef Name="UserGroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LunchAccountingModelsStoreContainer" CdmEntityContainer="LunchAccountingEntities">
+          <EntitySetMapping Name="AppResources">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.AppResource">
+              <MappingFragment StoreEntitySet="AppResource">
+                <ScalarProperty Name="AppResource_id" ColumnName="AppResource_id" />
+                <ScalarProperty Name="Resource" ColumnName="Resource" />
+                <ScalarProperty Name="DefaultAccess" ColumnName="DefaultAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppResourceAccesses">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.AppResourceAccess">
+              <MappingFragment StoreEntitySet="AppResourceAccess">
+                <ScalarProperty Name="AppResourceAccess_id" ColumnName="AppResourceAccess_id" />
+                <ScalarProperty Name="AppResource_id" ColumnName="AppResource_id" />
+                <ScalarProperty Name="Identity_id" ColumnName="Identity_id" />
+                <ScalarProperty Name="IdentityType" ColumnName="IdentityType" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodCards">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.FoodCard">
+              <MappingFragment StoreEntitySet="FoodCard">
+                <ScalarProperty Name="FoodCard_id" ColumnName="FoodCard_id" />
+                <ScalarProperty Name="FoodCardName" ColumnName="FoodCardName" />
+                <ScalarProperty Name="Owner_id" ColumnName="Owner_id" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodCardRecharges">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.FoodCardRecharge">
+              <MappingFragment StoreEntitySet="FoodCardRecharge">
+                <ScalarProperty Name="FoodCardRecharge_id" ColumnName="FoodCardRecharge_id" />
+                <ScalarProperty Name="FoodCard_id" ColumnName="FoodCard_id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="OperateFor" ColumnName="OperateFor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LunchRegisters">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.LunchRegister">
+              <MappingFragment StoreEntitySet="LunchRegister">
+                <ScalarProperty Name="LunchRegister_id" ColumnName="LunchRegister_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="LunchDate" ColumnName="LunchDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserAccount_id" ColumnName="UserAccount_id" />
+                <ScalarProperty Name="FoodCard_id" ColumnName="FoodCard_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserConsumes">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.UserConsume">
+              <MappingFragment StoreEntitySet="UserConsume">
+                <ScalarProperty Name="UserConsume_id" ColumnName="UserConsume_id" />
+                <ScalarProperty Name="FoodCard_id" ColumnName="FoodCard_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Register_id" ColumnName="Register_id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ConsumeDate" ColumnName="ConsumeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroup">
+                <ScalarProperty Name="UserGroup_id" ColumnName="UserGroup_id" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroupMembers">
+            <EntityTypeMapping TypeName="LunchAccounting.Models.UserGroupMember">
+              <MappingFragment StoreEntitySet="UserGroupMember">
+                <ScalarProperty Name="UserGroupMember_id" ColumnName="UserGroupMember_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="UserGroup_id" ColumnName="UserGroup_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

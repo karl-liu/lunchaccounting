@@ -1,0 +1,57 @@
+﻿@model LunchAccounting.Models.AppResourceAccess
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AppResourceAccess</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AppResourceAccess_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AppResourceAccess_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AppResource.Resource)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AppResource.Resource)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Identity_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Identity_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdentityType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdentityType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OperationType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OperationType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Access)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Access)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AppResourceAccess_id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

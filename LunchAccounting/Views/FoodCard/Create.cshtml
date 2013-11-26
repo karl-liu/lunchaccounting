@@ -1,0 +1,42 @@
+﻿@model LunchAccounting.Models.FoodCard
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FoodCard</legend>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Owner_id, "User")
+            @Html.DropDownList("Owner_id", null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.Owner_id)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FoodCardName, "Card Name")
+            @Html.TextBoxFor(model => model.FoodCardName, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.FoodCardName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrentBalance)
+            @Html.TextBoxFor(model => model.CurrentBalance, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.CurrentBalance)
+        </div>
+        <p>
+            <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-sm btn-primary" })
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

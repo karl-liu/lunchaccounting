@@ -1,0 +1,50 @@
+﻿@model LunchAccounting.Models.FoodCardRecharge
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FoodCardRecharge</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodCardRecharge_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCardRecharge_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodCard_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCard_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OperatorInfo.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OperatorInfo.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RechargeFor.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RechargeFor.UserName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FoodCardRecharge_id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

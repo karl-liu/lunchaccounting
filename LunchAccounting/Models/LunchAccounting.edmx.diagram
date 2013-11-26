@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a31d4a243141447199c1a7b372aefd18" Name="Diagram1">
+        <EntityTypeShape EntityType="LunchAccounting.Models.AppResource" Width="1.5" PointX="6.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.AppResourceAccess" Width="2.625" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.FoodCard" Width="1.5" PointX="3.125" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.FoodCardRecharge" Width="2" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.LunchRegister" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.User" Width="2" PointX="0.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.UserAccount" Width="1.5" PointX="5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.UserConsume" Width="1.5" PointX="5.375" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.UserGroup" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LunchAccounting.Models.UserGroupMember" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_AppResourceAccess_AppResource" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_FoodCard_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_FoodCardRecharge_FoodCard" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserAccount_FoodCard" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserConsume_FoodCard" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_FoodCardRecharge_User_OperateFor" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_FoodCardRecharge_User_Operator" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_LunchRegister_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserConsume_LunchRegister" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserAccount_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserConsume_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserGroupMember_User" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="LunchAccounting.Models.FK_UserGroupMember_UserGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

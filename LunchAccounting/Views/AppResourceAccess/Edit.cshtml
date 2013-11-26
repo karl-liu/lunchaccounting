@@ -1,0 +1,65 @@
+﻿@model LunchAccounting.Models.AppResourceAccess
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AppResourceAccess</legend>
+
+        <div>
+            @Html.HiddenFor(model => model.AppResourceAccess_id)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AppResource_id, "AppResource")
+            @Html.DropDownList("AppResource_id", null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.AppResource_id)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdentityType)
+            @Html.DropDownList("IdentityType", null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.IdentityType)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.User_id, "User")
+            @Html.DropDownList("User_id",null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.User_id)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserGroup_id, "UserGroup")
+            @Html.DropDownList("UserGroup_id",null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.UserGroup_id)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OperationType)
+            @Html.DropDownList("OperationType", null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.OperationType)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Access)
+            @Html.DropDownList("Access", null, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.Access)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-sm btn-primary" })
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

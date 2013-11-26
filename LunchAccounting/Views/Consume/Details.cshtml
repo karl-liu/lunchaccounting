@@ -1,0 +1,36 @@
+﻿@model LunchAccounting.Models.UserConsume
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserConsume</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ConsumerInfo.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConsumerInfo.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ConsumeDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConsumeDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserConsume_id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

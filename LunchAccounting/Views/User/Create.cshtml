@@ -1,0 +1,30 @@
+﻿@model LunchAccounting.Models.User
+
+@{
+    ViewBag.Title = "Create a user";
+}
+
+<h2>Create a user</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName)
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control disabled"})
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-sm btn-primary" })
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

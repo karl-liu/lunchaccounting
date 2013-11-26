@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LunchAccounting.Models.FoodCard>
+
+@{
+    ViewBag.Title = "Foodcard List";
+}
+
+<h2>Foodcard List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodCardName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerInfo.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodCardName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerInfo.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FoodCard_id }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.FoodCard_id  }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.FoodCard_id  }, new { @class = "btn btn-sm btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

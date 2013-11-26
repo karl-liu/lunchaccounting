@@ -1,0 +1,50 @@
+﻿@model LunchAccounting.Models.FoodCard
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FoodCard</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodCard_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCard_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodCardName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCardName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OwnerInfo.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OwnerInfo.UserName)
+    </div>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CurrentBalance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CurrentBalance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreateDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreateDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FoodCard_id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,54 @@
+﻿@model LunchAccounting.Models.FoodCard
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>FoodCard</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodCard_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCard_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodCardName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCardName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OwnerInfo.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OwnerInfo.UserName)
+    </div>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CurrentBalance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CurrentBalance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreateDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreateDate)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" class="btn btn-primary" /> 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+    </p>
+}

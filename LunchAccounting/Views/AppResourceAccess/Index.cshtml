@@ -1,0 +1,57 @@
+﻿@model IEnumerable<LunchAccounting.Models.AppResourceAccess>
+
+@{
+    ViewBag.Title = "Resource Access List";
+}
+
+<h2>Resource Access List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AppResource.Resource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdentityType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdentityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Access)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppResource.Resource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdentityType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdentityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Access)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AppResourceAccess_id }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.AppResourceAccess_id }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.AppResourceAccess_id }, new { @class = "btn btn-sm btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

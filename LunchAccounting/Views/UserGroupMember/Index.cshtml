@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LunchAccounting.Models.UserGroupMember>
+
+@{
+    ViewBag.Title = "UserGroup Membership List";
+}
+
+<h2>UserGroup Membership List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserGroup.GroupName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserGroup.GroupName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UserGroupMember_id }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.UserGroupMember_id }, new { @class = "btn btn-sm btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserGroupMember_id }, new { @class = "btn btn-sm btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

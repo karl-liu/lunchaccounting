@@ -1,0 +1,34 @@
+﻿@model IEnumerable<LunchAccounting.Models.LunchRegister>
+
+@{
+    ViewBag.Title = "Today's Lunch Registers";
+}
+
+<h2>Today's Lunch Registers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LunchDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LunchDate)
+        </td>
+    </tr>
+}
+
+</table>

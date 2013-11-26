@@ -1,0 +1,22 @@
+﻿@model LunchAccounting.Models.UserGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserGroup</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GroupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserGroup_id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>
